@@ -46,7 +46,8 @@ The API is available at https://api.irail.be.
 
 **Response**
 
-  { id: '0',
+{ 
+  id: '0',
       departure:
        { delay: '0',
          station: 'Liège-Guillemins',
@@ -75,7 +76,7 @@ The API is available at https://api.irail.be.
          walking: '0' },
       duration: '3060',
       occupancy: { '@id': 'http://api.irail.be/terms/unknown', name: 'unknown' } 
-    }
+}
 
 **Examples**
 Request:
@@ -96,7 +97,7 @@ Request:
 
 **Response**
 
-  { 
+{ 
     version: '1.1',
     timestamp: '1521241196',
     disturbance:
@@ -106,7 +107,7 @@ Request:
          link: 'http://www.belgianrail.be/jp/sncb-nmbs-routeplanner/help.exe/en?tpl=showmap_external&tplParamHimMsgInfoGroup=trouble&messageID=26800&channelFilter=custom2,livemap,rss_line_10,twitter,custom1,timetable&',
          timestamp: '1521230603' }
        ] 
-  }
+}
  
 **Examples**
 Request:
@@ -127,7 +128,7 @@ Request:
 
 **Response**
 
-  { 
+{ 
     version: '1.1',
     timestamp: '1521241528',
     station: 'Brussels-Central',
@@ -143,7 +144,7 @@ Request:
        departure:
         [ [Object]]
       }
-  }
+}
 
 **Examples**
 
@@ -169,7 +170,7 @@ Request:
 
 **Response**
 
-  { 
+{ 
     version: '1.1',
     timestamp: '1521241863',
     connection:
@@ -181,7 +182,7 @@ Request:
          occupancy: [Object] 
        }
       ] 
-  }
+}
 
 **Examples**
 Request:
@@ -211,7 +212,8 @@ Request:
 
 **Response**
 
-  { version: '1.1',
+{ 
+  version: '1.1',
     timestamp: '1521242220',
     vehicle: 'BE.NMBS.IC1832',
     vehicleinfo:
@@ -226,7 +228,7 @@ Request:
         [ [Object]
         ] 
       } 
-  }
+}
 
 **Examples**
 
