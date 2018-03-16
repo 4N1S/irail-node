@@ -46,6 +46,7 @@ The API is available at https://api.irail.be.
 
 **Response**
 
+```javasctipt
 { 
   id: '0',
   departure:
@@ -82,6 +83,7 @@ The API is available at https://api.irail.be.
       '@id': 'http://api.irail.be/terms/unknown', name: 'unknown' 
     } 
 }
+```
 
 **Examples**
 Request:
@@ -102,6 +104,7 @@ Request:
 
 **Response**
 
+```javasctipt
 { 
   version: '1.1',
   timestamp: '1521241196',
@@ -116,7 +119,8 @@ Request:
       }
     ] 
 }
- 
+```
+
 **Examples**
 Request:
     /api/disturbances
@@ -136,6 +140,7 @@ Request:
 
 **Response**
 
+```javasctipt
 { 
   version: '1.1',
   timestamp: '1521241528',
@@ -153,6 +158,7 @@ Request:
       [ [Object]]
     }
 }
+```
 
 **Examples**
 
@@ -177,7 +183,7 @@ Request:
 ### connections
 
 **Response**
-
+```javasctipt
 { 
   version: '1.1',
   timestamp: '1521241863',
@@ -193,6 +199,7 @@ Request:
      }
     ] 
 }
+```
 
 **Examples**
 Request:
@@ -221,7 +228,7 @@ Request:
 ### vehicle
 
 **Response**
-
+```javasctipt
 { 
   version: '1.1',
   timestamp: '1521242220',
@@ -239,6 +246,7 @@ Request:
       ] 
     } 
 }
+```
 
 **Examples**
 
