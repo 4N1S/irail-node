@@ -1,6 +1,6 @@
 {
   "name": "irail-node",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "wrapper api for irail.be API",
   "main": "index.js",
   "scripts": {
