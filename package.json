@@ -33,6 +33,7 @@
     "example": "examples"
   },
   "devDependencies": {
+    "tape": "^4.9.0",
     "chai": "*",
     "sinon-chai": "*",
     "sinon": "*"

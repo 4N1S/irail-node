@@ -1,15 +1,17 @@
 /*jslint node: true */
 'use strict';
+var ttest = require('tape');
 
-var irailclient = require('../index.js');
-
+var irailclient = require('../');
 var client = new irailclient();
 
-client.disturbances(function (error, data) {
-    if(error) { 
-        console.log(error); 
-    }
-    console.dir(data);
+ttest('objectisok', function (t) {
+    t.plan(1);
+    var cd = client.disturbances(function (error, data) {
+        if(error) {
+            console.log(error,data);
+        }
+        t.deepEqual(cd, cd);
+    });
 });
-
 
