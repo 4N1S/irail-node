@@ -46,6 +46,6 @@ var date=180318;
 
 var id="BE.NMBS.IC1832";
 client.vehicle(id,lang,date,function (error, data) {
-	if(error) { console.log("E!",error); }
-	console.dir(data);
+    if(error) { console.log("E!",error); }
+    console.dir(data);
 });
