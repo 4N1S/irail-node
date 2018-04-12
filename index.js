@@ -1,9 +1,11 @@
+/*jslint node: true */
+'use strict';
 
-var _ = require('underscore');
+//var _ = require('underscore');
 var https = require('https');
-var crypto = require('crypto');
-var url = require('url');
-var urlencode = require('urlencode');
+// var crypto = require('crypto');
+// var url = require('url');
+// var urlencode = require('urlencode');
 
 var irailnode = function(key,secret,verbose) {
 	this.verbose = verbose || false;
@@ -20,7 +22,7 @@ var irailnode = function(key,secret,verbose) {
 			"User-Agent": "irailnode-node",
 			"Content-Type": "application/x-www-form-urlencoded"
 		}
-	}
+	};
 };
 
 irailnode.prototype.stations = function(lang,callback) {
@@ -28,21 +30,21 @@ irailnode.prototype.stations = function(lang,callback) {
 	this.pubRequest("stations/?format=json&lang="+lang, {}, function(err, data) {
 		return callback(err, data.station);
 	});
-}
+};
 
 irailnode.prototype.disturbances = function(lang,callback) {
 
 	this.pubRequest("disturbances/?format=json&lang="+lang, {}, function(err, data) {
 		return callback(err, data);
 	});
-}
+};
 
 irailnode.prototype.liveboard = function(id,lang,station,arrdep,callback) {
 
 	this.pubRequest("liveboard/?format=json&lang="+lang+"&id="+id+"&arrdep="+arrdep+"&station="+station, {}, function(err, data) {
 		return callback(err, data);
 	});
-}
+};
 
 //Choices: departure arrival
 irailnode.prototype.connections = function(from,to,lang,date,timesel,typeOfTransport,callback) {
@@ -50,14 +52,14 @@ irailnode.prototype.connections = function(from,to,lang,date,timesel,typeOfTrans
 	this.pubRequest("connections/?from="+from+"&to="+to+"&timesel="+timesel+"&date="+date+"&typeOfTransport="+typeOfTransport+"&format=json&lang="+lang, {}, function(err, data) {
 		return callback(err, data);
 	});
-}
+};
 //Choices: departure arrival
 irailnode.prototype.vehicle = function(id,lang,date,callback) {
 
 	this.pubRequest("vehicle/?id="+id+"&date="+date+"&format=json&lang="+lang, {}, function(err, data) {
 		return callback(err, data);
 	});
-}
+};
 
 
 irailnode.prototype.pubRequest = function(method, params, callback) {
@@ -69,15 +71,15 @@ irailnode.prototype.pubRequest = function(method, params, callback) {
 	  verbose: this.verbose
 	};
 	console.log(options.path);
-	cb = function(response) {
+	var cb = function(response) {
 		if (response.statusCode < 200 || response.statusCode > 299) {
 		   callback(response.statusCode);
 		 }
-		if(response.statusCode==200){
+		if(response.statusCode===200){
 		var str = '';
 		response.on('data', function (chunk) {
 			str += chunk;
-			if (options.verbose) console.log(str);
+			if (options.verbose) { console.log(str); }
 		});
 
 
@@ -92,7 +94,7 @@ irailnode.prototype.pubRequest = function(method, params, callback) {
 			}
 		});
 		}
-	}
+	};
 	var req = https.request(options, cb);
 	req.on('error', function(err) {
 		callback(err.status, null);
