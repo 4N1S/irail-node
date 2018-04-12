@@ -1,17 +1,24 @@
-/*jslint node: true */
+/* jshint -W079 */
+/* jshint browser: false, node: true, strict: true */
+/* jslint node: true */
 'use strict';
-var ttest = require('tape');
 
-var irailclient = require('../');
-var client = new irailclient();
+if (typeof module === "object" && typeof require === "function") {
+    //var test = require('tape');
+    var test = require('tap').test;
 
-ttest('objectisok', function (t) {
+    var irailclient = require('../');
+}
+
+test('objectisok', function (t) {
+    t.pass('this is fine');
+    var client = new irailclient();
     t.plan(1);
     var cd = client.disturbances(function (error, data) {
         if(error) {
-            console.log(error,data);
+            console.log(error,cd,data);
         }
-        t.deepEqual(cd, cd);
+        t.deepEqual(1,0);
     });
 });
 
