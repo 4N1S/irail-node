@@ -32,5 +32,9 @@
   "directories": {
     "example": "examples"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "chai": "*",
+    "sinon-chai": "*",
+    "sinon": "*"
+  },
 }
