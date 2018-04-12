@@ -1,8 +1,8 @@
 /*jslint node: true */
 'use strict';
 
-//var _ = require('underscore');
 var https = require('https');
+// var _ = require('underscore');
 // var crypto = require('crypto');
 // var url = require('url');
 // var urlencode = require('urlencode');
