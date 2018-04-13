@@ -11,7 +11,7 @@ if (typeof module === "object" && typeof require === "function") {
 }
 
 test('disturbance test', function (t) {
-    t.plan(4);
+    t.plan(7);
     var client = new irailclient();
     //console.log(client);
 
@@ -24,18 +24,25 @@ test('disturbance test', function (t) {
         });
     } , {}, { skip: false });
 
+    t.pass('Next');
     // test a good call with en language
     t.doesNotThrow(function() {
         client.disturbances('en',function (error, data) {
             if(error) {
                 console.log(error);
             }
-            console.log(data);process.exit(0);
-            t.ok(data, 'disturbances call return');
-            var str = JSON.stringify(data, null, 4);
-            console.log(str);
-            t.deepEqual(data,data);
+            // console.log(data);//process.exit(0);
+            t.ok(data, 'expect defined value');
+            if (data) {
+                var str = JSON.stringify(data, null, 4);
+               if (0) { console.log(str); }
+            }
+            if (data.disturbance) {
+                t.match(data, { timestamp: /(\d+)/ });
+            }
+            t.equal(1,1);
         });
     } , 'No exception occured');
+    t.pass('Next');
 });
 
