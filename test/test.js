@@ -82,7 +82,7 @@ test('connections test', function (t) {
 });
 
 test('liveboard test', function (t) {
-    t.plan(7);
+    t.plan(13);
     var client = new irailclient();
 
     // test a call with missing language (aka null)
@@ -95,6 +95,7 @@ test('liveboard test', function (t) {
     } , {}, { skip: false });
 
     t.pass('Next');
+
     // test a good call with en language
     t.doesNotThrow(function() {
         client.liveboard(null, 'nl', 'Antwerpen-Centraal',null,function (error, data) {
@@ -111,11 +112,49 @@ test('liveboard test', function (t) {
             if (data.timestamp) {
                 t.match(data, { timestamp: /(\d+)/ });
             }
-            // t.equal(1,1);
         });
     } , 'No exception occured');
 
-    // Test id and station filled out together
+    // test a good call with ID and no name
+    t.doesNotThrow(function() {
+        client.liveboard('BE.NMBS.008892007', 'nl', null ,null,function (error, data) {
+            if(error) {
+                console.log(error);
+            }
+            // console.log(data);//process.exit(0);
+            if (data) {
+                var str = JSON.stringify(data, null, 4);
+               if (0) { console.log(str); }
+            }
+            t.ok(data, 'expect defined value');
+            //console.log(data);
+            if (data.timestamp) {
+                t.match(data, { timestamp: /(\d+)/ });
+            }
+        });
+    } , 'No exception occured');
+
+    // test a good call with ID and no name and with ardep set
+    t.doesNotThrow(function() {
+        client.liveboard('BE.NMBS.008892007', 'nl', null ,'departure',function (error, data) {
+            if(error) {
+                console.log(error);
+            }
+            // console.log(data);//process.exit(0);
+            if (data) {
+                var str = JSON.stringify(data, null, 4);
+               if (0) { console.log(str); }
+            }
+            t.ok(data, 'expect defined value');
+            //console.log(data);
+            if (data.timestamp) {
+                t.match(data, { timestamp: /(\d+)/ });
+            }
+        });
+    } , 'No exception occured');
+
+
+    // Test id and station filled out together needs to throw an error
     t.throws(function() {
         client.liveboard('BE.NMBS.008892007', 'nl', 'Brussel-Centraal',null, function (error) {
             if(error) {
@@ -127,7 +166,7 @@ test('liveboard test', function (t) {
 });
 
 test('stations test', function (t) {
-    t.plan(2);
+    t.plan(6);
     var client = new irailclient();
 
     // test a call with missing language (aka null)
@@ -139,11 +178,32 @@ test('stations test', function (t) {
         });
     } , {}, { skip: false });
 
+    t.pass('Next');
+
+    // test a call with missing language (aka null)
+    t.doesNotThrow(function() {
+        client.stations('nl',function (error, data) {
+            if(error) {
+                console.log(error);
+            }
+            //console.log(data);//process.exit(0);
+            if (data) {
+                var str = JSON.stringify(data, null, 4);
+               if (0) { console.log(str); }
+            }
+            t.ok(data, 'expect defined value');
+            // console.log(data[0]);
+            if (data[0].name) {
+                t.match(data[0], { name: /(.+)/ });
+            }
+            // t.equal(1,1);
+        });
+    } , 'No exception occured');
     t.pass('Done');
 });
 
 test('vehicle test', function (t) {
-    t.plan(2);
+    t.plan(5);
     var client = new irailclient();
 
     // test a call with missing language (aka null)
@@ -154,6 +214,26 @@ test('vehicle test', function (t) {
             }
         });
     } , {}, { skip: false });
+
+    // test a call with language and
+    t.doesNotThrow(function() {
+        client.vehicle('BE.NMBS.IC1832','fr',null,function (error, data) {
+            if(error) {
+                console.log(error);
+            }
+            console.log(data);//process.exit(0);
+            if (data) {
+                var str = JSON.stringify(data, null, 4);
+                if (0) { console.log(str); }
+            }
+            t.ok(data, 'expect defined value');
+            // console.log(data[0]);
+            if (data) {
+                t.match(data, { vehicle: /BE.NMBS.IC1832/ });
+            }
+            // t.equal(1,1);
+        });
+    } , 'No exception occured');
 
     t.pass('Done');
 });

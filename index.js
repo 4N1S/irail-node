@@ -56,7 +56,8 @@ irailnode.prototype.liveboard = function(id,lang,station,arrdep,callback) {
     if (!lang || (!id && !station)) {
         let e = new Error('Missing required parameter');
         throw e;
-    } else if(id && station) {
+    }
+    if(id && station) {
         let e = new Error('You cannot pass both id and station, use one of both');
         throw e;
     }
@@ -66,9 +67,11 @@ irailnode.prototype.liveboard = function(id,lang,station,arrdep,callback) {
         format: 'json'
     };
 
-    // Required
+    // Already checked these
+    params.lang=lang;
+
+    // one of both required
     if (id) { params.id=id; }
-    if (lang) { params.lang= lang; }
     if (station) { params.station=station; }
 
     // Optional
