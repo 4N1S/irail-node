@@ -11,14 +11,17 @@ if (typeof module === "object" && typeof require === "function") {
 }
 
 test('objectisok', function (t) {
-    t.pass('this is fine');
+    t.plan(2);
     var client = new irailclient();
-    t.plan(1);
-    var cd = client.disturbances(function (error, data) {
+    console.log(client);
+    client.disturbances('en',function (error, data) {
+        t.pass('fires up');
         if(error) {
-            console.log(error,cd,data);
+            //t.pass('error');
+            console.log(error);
         }
-        t.deepEqual(1,0);
+        console.log(data);
+        t.deepEqual(data,data);
     });
 });
 

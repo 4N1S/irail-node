@@ -27,6 +27,11 @@ var irailnode = function(key,secret,verbose) {
 
 irailnode.prototype.stations = function(lang,callback) {
 
+    if (!lang) {
+        var e = new Error('parameter lang is not defined');
+        throw e;
+    }
+
     this.pubRequest("stations/?format=json&lang="+lang, {}, function(err, data) {
         return callback(err, data.station);
     });
@@ -34,12 +39,21 @@ irailnode.prototype.stations = function(lang,callback) {
 
 irailnode.prototype.disturbances = function(lang,callback) {
 
+    if (!lang) {
+        var e = new Error('parameter lang is not defined');
+        throw e;
+    }
+
     this.pubRequest("disturbances/?format=json&lang="+lang, {}, function(err, data) {
         return callback(err, data);
     });
 };
 
 irailnode.prototype.liveboard = function(id,lang,station,arrdep,callback) {
+    if (!lang) {
+        var e = new Error('parameter lang is not defined');
+        throw e;
+    }
 
     this.pubRequest("liveboard/?format=json&lang="+lang+"&id="+id+"&arrdep="+arrdep+"&station="+station, {}, function(err, data) {
         return callback(err, data);
@@ -48,6 +62,10 @@ irailnode.prototype.liveboard = function(id,lang,station,arrdep,callback) {
 
 //Choices: departure arrival
 irailnode.prototype.connections = function(from,to,lang,date,timesel,typeOfTransport,callback) {
+    if (!lang) {
+        var e = new Error('parameter lang is not defined');
+        throw e;
+    }
 
     this.pubRequest("connections/?from="+from+"&to="+to+"&timesel="+timesel+"&date="+date+"&typeOfTransport="+typeOfTransport+"&format=json&lang="+lang, {}, function(err, data) {
         return callback(err, data);
@@ -55,6 +73,10 @@ irailnode.prototype.connections = function(from,to,lang,date,timesel,typeOfTrans
 };
 //Choices: departure arrival
 irailnode.prototype.vehicle = function(id,lang,date,callback) {
+    if (!lang) {
+        var e = new Error('parameter lang is not defined');
+        throw e;
+    }
 
     this.pubRequest("vehicle/?id="+id+"&date="+date+"&format=json&lang="+lang, {}, function(err, data) {
         return callback(err, data);
