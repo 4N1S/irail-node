@@ -30,7 +30,7 @@ var irailnode = function(key,secret,verbose) {
 irailnode.prototype.stations = function(lang,callback) {
 
     if (!lang) {
-        var e = new Error('parameter lang is not defined');
+        let e = new Error('parameter lang is not defined');
         throw e;
     }
 
@@ -42,7 +42,7 @@ irailnode.prototype.stations = function(lang,callback) {
 irailnode.prototype.disturbances = function(lang,callback) {
 
     if (!lang) {
-        var e = new Error('parameter lang is not defined');
+        let e = new Error('parameter lang is not defined');
         throw e;
     }
 
@@ -53,8 +53,11 @@ irailnode.prototype.disturbances = function(lang,callback) {
 
 irailnode.prototype.liveboard = function(id,lang,station,arrdep,callback) {
     // Bare minimum to get this call to work
-    if (!lang || !id || !station ) {
-        var e = new Error('Missing required parameter');
+    if (!lang || (!id && !station)) {
+        let e = new Error('Missing required parameter');
+        throw e;
+    } else if(id && station) {
+        let e = new Error('You cannot pass both id and station, use one of both');
         throw e;
     }
 
@@ -82,7 +85,7 @@ irailnode.prototype.liveboard = function(id,lang,station,arrdep,callback) {
 irailnode.prototype.connections = function(from,to,lang,date,timesel,typeOfTransport,callback) {
     // Bare minimum to get call to work
     if (!lang || !from || !to ) {
-        var e = new Error('Missing required parameter');
+        let e = new Error('Missing required parameter');
         throw e;
     }
 
@@ -111,7 +114,7 @@ irailnode.prototype.connections = function(from,to,lang,date,timesel,typeOfTrans
 //Choices: departure arrival
 irailnode.prototype.vehicle = function(id,lang,date,callback) {
     if (!lang) {
-        var e = new Error('parameter lang is not defined');
+        let e = new Error('parameter lang is not defined');
         throw e;
     }
 
