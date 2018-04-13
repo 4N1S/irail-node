@@ -10,18 +10,32 @@ if (typeof module === "object" && typeof require === "function") {
     var irailclient = require('../');
 }
 
-test('objectisok', function (t) {
-    t.plan(2);
+test('disturbance test', function (t) {
+    t.plan(4);
     var client = new irailclient();
-    console.log(client);
-    client.disturbances('en',function (error, data) {
-        t.pass('fires up');
-        if(error) {
-            //t.pass('error');
-            console.log(error);
-        }
-        console.log(data);
-        t.deepEqual(data,data);
-    });
+    //console.log(client);
+
+    // test a call with missing language (aka null)
+    t.throws(function() {
+        client.disturbances(null,function (error) {
+            if(error) {
+                console.log(error);
+            }
+        });
+    } , {}, { skip: false });
+
+    // test a good call with en language
+    t.doesNotThrow(function() {
+        client.disturbances('en',function (error, data) {
+            if(error) {
+                console.log(error);
+            }
+            console.log(data);process.exit(0);
+            t.ok(data, 'disturbances call return');
+            var str = JSON.stringify(data, null, 4);
+            console.log(str);
+            t.deepEqual(data,data);
+        });
+    } , 'No exception occured');
 });
 

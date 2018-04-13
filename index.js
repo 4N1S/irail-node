@@ -92,7 +92,7 @@ irailnode.prototype.pubRequest = function(method, params, callback) {
         method: 'GET',
         verbose: this.verbose
     };
-    console.log(options.path);
+    //console.log(options.path);
     var cb = function(response) {
         if (response.statusCode < 200 || response.statusCode > 299) {
             callback(response.statusCode);
