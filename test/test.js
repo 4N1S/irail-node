@@ -19,11 +19,11 @@ test('disturbance test', function (t) {
                 console.log(error);
             }
         });
-    } , {}, { skip: false });
+    }, {}, { skip: false });
 
     t.pass('Next');
     // test a good call with en language
-    t.doesNotThrow(function() {
+    t.doesNotThrow(function () {
         client.disturbances('en', function (error, data) {
             if (error) {
                 console.log(error);
@@ -48,7 +48,7 @@ test('connections test', function (t) {
     var client = new Irailclient();
 
     // test a call with missing language (aka null)
-    t.throws(function() {
+    t.throws(function () {
         client.connections(null,null,null,null,null,null, function (error) {
             if (error) {
                 console.log(error);
@@ -58,7 +58,7 @@ test('connections test', function (t) {
     t.pass('Next A');
 
     // From not filled out
-    t.throws(function() {
+    t.throws(function () {
         client.connections(null,'Brussel-Noord','nl',null,null,null, function (error) {
             if (error) {
                 console.log(error);
@@ -68,7 +68,7 @@ test('connections test', function (t) {
     t.pass('Next B');
 
     // To not filled out
-    t.throws(function() {
+    t.throws(function () {
         client.connections('Brussel-Noord',null,'nl',null,null,null, function (error) {
             if (error) {
                 console.log(error);
@@ -78,7 +78,7 @@ test('connections test', function (t) {
     t.pass('Next C');
 
     // test a good call with en language
-    t.doesNotThrow(function() {
+    t.doesNotThrow(function () {
         client.connections('Antwerpen-Centraal','Brussel-Noord','nl',null,null,null, function (error, data) {
             if (error) {
                 console.log(error);
@@ -96,7 +96,7 @@ test('connections test', function (t) {
     } , 'No exception occured');
 
     // test a good call with nl , date, timesel departure (seems to 404 on the backend with a date , even today )
-    t.doesNotThrow(function() {
+    t.doesNotThrow(function () {
         // Create a simple data string natively
         var d = new Date();
         var datestring = ("0" + d.getDate()).slice(-2) + ("0"+(d.getMonth()+1)).slice(-2) + (''+(d.getFullYear())).slice(-2);
@@ -128,7 +128,7 @@ test('liveboard test', function (t) {
     var client = new Irailclient();
 
     // test a call with missing language (aka null)
-    t.throws(function() {
+    t.throws(function () {
         client.liveboard(null,null,null,null, function (error) {
             if (error) {
                 console.log(error);
@@ -155,7 +155,7 @@ test('liveboard test', function (t) {
     } , 'No exception occured');
 
     // test a good call with ID and no name
-    t.doesNotThrow(function() {
+    t.doesNotThrow(function () {
         client.liveboard('BE.NMBS.008892007', 'nl', null ,null,function (error, data) {
             if (error) {
                 console.log("SDFASFDASFDASFD");
@@ -174,7 +174,7 @@ test('liveboard test', function (t) {
     } , 'No exception occured');
 
     // test a good call with ID and no name and with ardep set
-    t.doesNotThrow(function() {
+    t.doesNotThrow(function () {
         client.liveboard('BE.NMBS.008892007', 'nl', null ,'departure',function (error, data) {
             if (error) {
                 console.log(error);
@@ -192,7 +192,7 @@ test('liveboard test', function (t) {
     } , 'No exception occured');
 
     // Test id and station filled out together needs to throw an error
-    t.throws(function() {
+    t.throws(function () {
         client.liveboard('BE.NMBS.008892007', 'nl', 'Brussel-Centraal',null, function (error) {
             if (error) {
                 console.log(error);
@@ -201,7 +201,7 @@ test('liveboard test', function (t) {
     } , {}, { skip: false });
 
     // Test id and station not filled out together , needs to throw error
-    t.throws(function() {
+    t.throws(function () {
         client.liveboard(null, 'nl', null ,null, function (error) {
             if (error) {
                 console.log(error);
@@ -217,7 +217,7 @@ test('stations test', function (t) {
     var client = new Irailclient();
 
     // test a call with missing language (aka null)
-    t.throws(function() {
+    t.throws(function () {
         client.stations(null,function (error) {
             if (error) {
                 console.log(error);
@@ -228,7 +228,7 @@ test('stations test', function (t) {
     t.pass('Next');
 
     // test a call with missing language (aka null)
-    t.doesNotThrow(function() {
+    t.doesNotThrow(function () {
         client.stations('nl',function (error, data) {
             if (error) {
                 console.log(error);
@@ -252,7 +252,7 @@ test('vehicle test', function (t) {
     var client = new Irailclient();
 
     // test a call with missing language (aka null)
-    t.throws(function() {
+    t.throws(function () {
         client.vehicle(null,null,null,function (error) {
             if (error) {
                 console.log(error);
@@ -261,7 +261,7 @@ test('vehicle test', function (t) {
     } , {}, { skip: false });
 
     // test a call with missing id (aka null) but lang is set
-    t.throws(function() {
+    t.throws(function () {
         client.vehicle(null,'nl',null,function (error) {
             if (error) {
                 console.log(error);
@@ -271,7 +271,7 @@ test('vehicle test', function (t) {
 
 
     // test a call with language and
-    t.doesNotThrow(function() {
+    t.doesNotThrow(function () {
         client.vehicle('BE.NMBS.IC1832','fr',null,function (error, data) {
             if (error) {
                 console.log(error);
