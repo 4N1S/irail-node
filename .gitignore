@@ -2,3 +2,5 @@ node_modules
 *.swp
 results.tap
 results.xml
+coverage/
+.nyc_output/
