@@ -9,7 +9,7 @@ var querystring = require('querystring');
 // var url = require('url');
 // var urlencode = require('urlencode');
 
-var irailnode = function(key,secret,verbose) {
+var irailnode = function (key, secret, verbose) {
     this.verbose = verbose || false;
     this.version = "0.0.1";
     this.key = key;
@@ -27,29 +27,29 @@ var irailnode = function(key,secret,verbose) {
     };
 };
 
-irailnode.prototype.stations = function(lang,callback) {
+irailnode.prototype.stations = function (lang,callback) {
     if (!lang) {
         let e = new Error('Missing required lang parameter');
         throw e;
     }
 
-    this.pubRequest("stations/?format=json&lang="+lang, {}, function(err, data) {
+    this.pubRequest("stations/?format=json&lang="+lang, {}, function (err, data) {
         return callback(err, data.station);
     });
 };
 
-irailnode.prototype.disturbances = function(lang,callback) {
+irailnode.prototype.disturbances = function (lang,callback) {
     if (!lang) {
         let e = new Error('Missing required lang parameter');
         throw e;
     }
 
-    this.pubRequest("disturbances/?format=json&lang="+lang, {}, function(err, data) {
+    this.pubRequest("disturbances/?format=json&lang="+lang, {}, function (err, data) {
         return callback(err, data);
     });
 };
 
-irailnode.prototype.liveboard = function(id,lang,station,arrdep,callback) {
+irailnode.prototype.liveboard = function (id,lang,station,arrdep,callback) {
     let e = null;
     // Bare minimum to get this call to work
     if (!lang) {
@@ -81,12 +81,12 @@ irailnode.prototype.liveboard = function(id,lang,station,arrdep,callback) {
 
     var post_data = querystring.stringify(params);
 
-    this.pubRequest("liveboard/?"+post_data, {}, function(err, data) {
+    this.pubRequest("liveboard/?"+post_data, {}, function (err, data) {
         return callback(err, data);
     });
 };
 
-irailnode.prototype.connections = function(from,to,lang,date,timesel,typeOfTransport,callback) {
+irailnode.prototype.connections = function (from,to,lang,date,timesel,typeOfTransport,callback) {
     let e = null;
     // Bare minimum to get call to work
     if (!lang) {
@@ -117,12 +117,12 @@ irailnode.prototype.connections = function(from,to,lang,date,timesel,typeOfTrans
 
     var post_data = querystring.stringify(params);
 
-    this.pubRequest("connections/?"+post_data, {}, function(err, data) {
+    this.pubRequest("connections/?"+post_data, {}, function (err, data) {
         return callback(err, data);
     });
 };
 
-irailnode.prototype.vehicle = function(id,lang,date,callback) {
+irailnode.prototype.vehicle = function (id,lang,date,callback) {
     if (!lang) {
         let e = new Error('Missing required lang parameter');
         throw e;
@@ -146,13 +146,13 @@ irailnode.prototype.vehicle = function(id,lang,date,callback) {
 
     var post_data = querystring.stringify(params);
 
-    this.pubRequest("vehicle/?"+post_data, {}, function(err, data) {
+    this.pubRequest("vehicle/?"+post_data, {}, function (err, data) {
         return callback(err, data);
     });
 };
 
 
-irailnode.prototype.pubRequest = function(method, params, callback) {
+irailnode.prototype.pubRequest = function (method, params, callback) {
     var options = {
         hostname: this.host,
         path: this.uri + method,
@@ -161,7 +161,7 @@ irailnode.prototype.pubRequest = function(method, params, callback) {
         verbose: this.verbose
     };
     //console.log(options.path);
-    var cb = function(response) {
+    var cb = function (response) {
         if (response.statusCode < 200 || response.statusCode > 299) {
             callback(response.statusCode);
         }
@@ -186,7 +186,7 @@ irailnode.prototype.pubRequest = function(method, params, callback) {
         }
     };
     var req = https.request(options, cb);
-    req.on('error', function(err) {
+    req.on('error', function (err) {
         callback(err.status, null);
     });
 
