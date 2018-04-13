@@ -42,7 +42,7 @@ test('disturbance test', function (t) {
             // t.equal(1,1);
         });
     } , 'No exception occured');
-    t.pass('Next');
+    t.pass('Done');
 });
 
 test('connections test', function (t) {
@@ -78,12 +78,11 @@ test('connections test', function (t) {
             // t.equal(1,1);
         });
     } , 'No exception occured');
-    t.pass('Next');
+    t.pass('Done');
 });
 
 test('liveboard test', function (t) {
-// irailnode.prototype.liveboard = function(id,lang,station,arrdep,callback)
-    t.plan(6);
+    t.plan(7);
     var client = new irailclient();
 
     // test a call with missing language (aka null)
@@ -115,7 +114,49 @@ test('liveboard test', function (t) {
             // t.equal(1,1);
         });
     } , 'No exception occured');
-    t.pass('Next');
+
+    // Test id and station filled out together
+    t.throws(function() {
+        client.liveboard('BE.NMBS.008892007', 'nl', 'Brussel-Centraal',null, function (error) {
+            if(error) {
+                console.log(error);
+            }
+        });
+    } , {}, { skip: false });
+    t.pass('Done');
 });
+
+test('stations test', function (t) {
+    t.plan(2);
+    var client = new irailclient();
+
+    // test a call with missing language (aka null)
+    t.throws(function() {
+        client.stations(null,function (error) {
+            if(error) {
+                console.log(error);
+            }
+        });
+    } , {}, { skip: false });
+
+    t.pass('Done');
+});
+
+test('vehicle test', function (t) {
+    t.plan(2);
+    var client = new irailclient();
+
+    // test a call with missing language (aka null)
+    t.throws(function() {
+        client.vehicle(null,null,null,function (error) {
+            if(error) {
+                console.log(error);
+            }
+        });
+    } , {}, { skip: false });
+
+    t.pass('Done');
+});
+
 
 
