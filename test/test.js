@@ -4,7 +4,6 @@
 'use strict';
 
 if (typeof module === "object" && typeof require === "function") {
-    //var test = require('tape');
     var test = require('tap').test;
     var irailclient = require('../');
 }
@@ -12,7 +11,6 @@ if (typeof module === "object" && typeof require === "function") {
 test('disturbance test', function (t) {
     t.plan(6);
     var client = new irailclient();
-    //console.log(client);
 
     // test a call with missing language (aka null)
     t.throws(function() {
@@ -57,15 +55,14 @@ test('connections test', function (t) {
             }
         });
     } , {}, { skip: false });
-
     t.pass('Next');
+
     // test a good call with en language
     t.doesNotThrow(function() {
         client.connections('Antwerpen-Centraal','Brussel-Noord','nl',null,null,null,function (error, data) {
             if(error) {
                 console.log(error);
             }
-            // console.log(data);//process.exit(0);
             if (data) {
                 var str = JSON.stringify(data, null, 4);
                 if (0) { console.log(str); }
@@ -75,7 +72,6 @@ test('connections test', function (t) {
             if (data.timestamp) {
                 t.match(data, { timestamp: /(\d+)/ });
             }
-            // t.equal(1,1);
         });
     } , 'No exception occured');
     t.pass('Done');
@@ -102,7 +98,6 @@ test('liveboard test', function (t) {
             if(error) {
                 console.log(error);
             }
-            // console.log(data);//process.exit(0);
             if (data) {
                 var str = JSON.stringify(data, null, 4);
                 if (0) { console.log(str); }
@@ -121,7 +116,6 @@ test('liveboard test', function (t) {
             if(error) {
                 console.log(error);
             }
-            // console.log(data);//process.exit(0);
             if (data) {
                 var str = JSON.stringify(data, null, 4);
                 if (0) { console.log(str); }
@@ -140,7 +134,6 @@ test('liveboard test', function (t) {
             if(error) {
                 console.log(error);
             }
-            // console.log(data);//process.exit(0);
             if (data) {
                 var str = JSON.stringify(data, null, 4);
                 if (0) { console.log(str); }
@@ -186,7 +179,6 @@ test('stations test', function (t) {
             if(error) {
                 console.log(error);
             }
-            //console.log(data);//process.exit(0);
             if (data) {
                 var str = JSON.stringify(data, null, 4);
                 if (0) { console.log(str); }
@@ -196,7 +188,6 @@ test('stations test', function (t) {
             if (data[0].name) {
                 t.match(data[0], { name: /(.+)/ });
             }
-            // t.equal(1,1);
         });
     } , 'No exception occured');
     t.pass('Done');
@@ -221,7 +212,6 @@ test('vehicle test', function (t) {
             if(error) {
                 console.log(error);
             }
-            // console.log(data);//process.exit(0);
             if (data) {
                 var str = JSON.stringify(data, null, 4);
                 if (0) { console.log(str); }
@@ -231,7 +221,6 @@ test('vehicle test', function (t) {
             if (data) {
                 t.match(data, { vehicle: /BE.NMBS.IC1832/ });
             }
-            // t.equal(1,1);
         });
     } , 'No exception occured');
 
