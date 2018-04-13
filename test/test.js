@@ -30,10 +30,12 @@ test('disturbance test', function (t) {
             }
             // console.log(data);//process.exit(0);
             t.ok(data, 'expect defined value');
+            /*
             if (data) {
                 var str = JSON.stringify(data, null, 4);
                 if (0) { console.log(str); }
             }
+            */
             if (data.timestamp) {
                 t.match(data, { timestamp: /(\d+)/ });
             }
@@ -83,10 +85,12 @@ test('connections test', function (t) {
             if (error) {
                 console.log(error);
             }
+            /*
             if (data) {
                 var str = JSON.stringify(data, null, 4);
                 if (0) { console.log(str); }
             }
+            */
             t.ok(data, 'expect defined value');
             //console.log(data);
             if (data.timestamp) {
@@ -109,10 +113,12 @@ test('connections test', function (t) {
                 //console.log(data);
                 // process.exit(0);
             }
+            /*
             if (data) {
                 var str = JSON.stringify(data, null, 4);
                 if (0) { console.log(str); }
             }
+            */
             t.ok(data, 'expect defined value');
             //console.log(data);
             if (data.timestamp) {
@@ -142,10 +148,12 @@ test('liveboard test', function (t) {
             if (error) {
                 console.log(error);
             }
+            /*
             if (data) {
                 var str = JSON.stringify(data, null, 4);
                 if (0) { console.log(str); }
             }
+            */
             t.ok(data, 'expect defined value');
             //console.log(data);
             if (data.timestamp) {
@@ -161,10 +169,12 @@ test('liveboard test', function (t) {
                 console.log("SDFASFDASFDASFD");
                 console.log(error);
             }
+            /*
             if (data) {
                 var str = JSON.stringify(data, null, 4);
                 if (0) { console.log(str); }
             }
+            */
             t.ok(data, 'expect defined value');
             //console.log(data);
             if (data.timestamp) {
@@ -179,10 +189,12 @@ test('liveboard test', function (t) {
             if (error) {
                 console.log(error);
             }
+            /*
             if (data) {
                 var str = JSON.stringify(data, null, 4);
                 if (0) { console.log(str); }
             }
+            */
             t.ok(data, 'defined value');
             //console.log(data);
             if (data.timestamp) {
@@ -233,10 +245,12 @@ test('stations test', function (t) {
             if (error) {
                 console.log(error);
             }
+            /*
             if (data) {
                 var str = JSON.stringify(data, null, 4);
                 if (0) { console.log(str); }
             }
+            */
             t.ok(data, 'expect defined value');
             // console.log(data[0]);
             if (data[0].name) {
@@ -276,10 +290,12 @@ test('vehicle test', function (t) {
             if (error) {
                 console.log(error);
             }
+            /*
             if (data) {
                 var str = JSON.stringify(data, null, 4);
                 if (0) { console.log(str); }
             }
+            */
             t.ok(data, 'expect defined value');
             //console.log(data);
             if (data.timestamp) {
