@@ -52,19 +52,34 @@ irailnode.prototype.disturbances = function(lang,callback) {
 };
 
 irailnode.prototype.liveboard = function(id,lang,station,arrdep,callback) {
-    if (!lang) {
-        var e = new Error('parameter lang is not defined');
+    // Bare minimum to get this call to work
+    if (!lang || !id || !station ) {
+        var e = new Error('Missing required parameter');
         throw e;
     }
 
-    this.pubRequest("liveboard/?format=json&lang="+lang+"&id="+id+"&arrdep="+arrdep+"&station="+station, {}, function(err, data) {
+    // params as object
+    var params = {
+        format: 'json'
+    };
+
+    // Required
+    if (id) { params.id=id; }
+    if (station) { params.station=station; }
+
+    // Optional
+    if (arrdep) { params.arrdep=arrdep; }
+
+    var post_data = querystring.stringify(params);
+
+    this.pubRequest("liveboard/?"+post_data, {}, function(err, data) {
         return callback(err, data);
     });
 };
 
 //Choices: departure arrival
 irailnode.prototype.connections = function(from,to,lang,date,timesel,typeOfTransport,callback) {
-    // Bare minimum to get calls to work
+    // Bare minimum to get call to work
     if (!lang || !from || !to ) {
         var e = new Error('Missing required parameter');
         throw e;
@@ -85,10 +100,9 @@ irailnode.prototype.connections = function(from,to,lang,date,timesel,typeOfTrans
     if (timesel) { params.timesel= timesel; }
     if (typeOfTransport) { params.typeOfTransport= typeOfTransport; }
 
-    //console.log(params);
     var post_data = querystring.stringify(params);
 
-    this.pubRequest("connections/?"+post_data, post_data, function(err, data) {
+    this.pubRequest("connections/?"+post_data, {}, function(err, data) {
         return callback(err, data);
     });
 };
