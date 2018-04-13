@@ -128,10 +128,10 @@ irailnode.prototype.vehicle = function(id,lang,date,callback) {
 
     // Required
     if (id) { params.id=id; }
-    if (lang) { params.lang= lang; }
+    if (lang) { params.lang=lang; }
 
     // Optional
-    if (date) { params.date= date; }
+    if (date) { params.date=date; }
 
     var post_data = querystring.stringify(params);
 

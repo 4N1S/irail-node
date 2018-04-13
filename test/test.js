@@ -34,7 +34,7 @@ test('disturbance test', function (t) {
             t.ok(data, 'expect defined value');
             if (data) {
                 var str = JSON.stringify(data, null, 4);
-               if (0) { console.log(str); }
+                if (0) { console.log(str); }
             }
             if (data.timestamp) {
                 t.match(data, { timestamp: /(\d+)/ });
@@ -68,7 +68,7 @@ test('connections test', function (t) {
             // console.log(data);//process.exit(0);
             if (data) {
                 var str = JSON.stringify(data, null, 4);
-               if (0) { console.log(str); }
+                if (0) { console.log(str); }
             }
             t.ok(data, 'expect defined value');
             //console.log(data);
@@ -105,7 +105,7 @@ test('liveboard test', function (t) {
             // console.log(data);//process.exit(0);
             if (data) {
                 var str = JSON.stringify(data, null, 4);
-               if (0) { console.log(str); }
+                if (0) { console.log(str); }
             }
             t.ok(data, 'expect defined value');
             //console.log(data);
@@ -124,7 +124,7 @@ test('liveboard test', function (t) {
             // console.log(data);//process.exit(0);
             if (data) {
                 var str = JSON.stringify(data, null, 4);
-               if (0) { console.log(str); }
+                if (0) { console.log(str); }
             }
             t.ok(data, 'expect defined value');
             //console.log(data);
@@ -143,7 +143,7 @@ test('liveboard test', function (t) {
             // console.log(data);//process.exit(0);
             if (data) {
                 var str = JSON.stringify(data, null, 4);
-               if (0) { console.log(str); }
+                if (0) { console.log(str); }
             }
             t.ok(data, 'expect defined value');
             //console.log(data);
@@ -189,7 +189,7 @@ test('stations test', function (t) {
             //console.log(data);//process.exit(0);
             if (data) {
                 var str = JSON.stringify(data, null, 4);
-               if (0) { console.log(str); }
+                if (0) { console.log(str); }
             }
             t.ok(data, 'expect defined value');
             // console.log(data[0]);
@@ -221,7 +221,7 @@ test('vehicle test', function (t) {
             if(error) {
                 console.log(error);
             }
-            console.log(data);//process.exit(0);
+            // console.log(data);//process.exit(0);
             if (data) {
                 var str = JSON.stringify(data, null, 4);
                 if (0) { console.log(str); }
@@ -237,6 +237,4 @@ test('vehicle test', function (t) {
 
     t.pass('Done');
 });
-
-
 
