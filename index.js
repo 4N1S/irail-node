@@ -65,6 +65,7 @@ irailnode.prototype.liveboard = function(id,lang,station,arrdep,callback) {
 
     // Required
     if (id) { params.id=id; }
+    if (lang) { params.lang= lang; }
     if (station) { params.station=station; }
 
     // Optional
@@ -120,8 +121,8 @@ irailnode.prototype.vehicle = function(id,lang,date,callback) {
     };
 
     // Required
-    if (lang) { params.lang= lang; }
     if (id) { params.id=id; }
+    if (lang) { params.lang= lang; }
 
     // Optional
     if (date) { params.date= date; }
