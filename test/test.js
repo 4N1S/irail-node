@@ -13,9 +13,9 @@ test('disturbance test', function (t) {
     var client = new Irailclient();
 
     // test a call with missing language (aka null)
-    t.throws(function() {
-        client.disturbances(null,function (error) {
-            if(error) {
+    t.throws(function () {
+        client.disturbances(null, function (error) {
+            if (error) {
                 console.log(error);
             }
         });
@@ -24,8 +24,8 @@ test('disturbance test', function (t) {
     t.pass('Next');
     // test a good call with en language
     t.doesNotThrow(function() {
-        client.disturbances('en',function (error, data) {
-            if(error) {
+        client.disturbances('en', function (error, data) {
+            if (error) {
                 console.log(error);
             }
             // console.log(data);//process.exit(0);
@@ -49,8 +49,8 @@ test('connections test', function (t) {
 
     // test a call with missing language (aka null)
     t.throws(function() {
-        client.connections(null,null,null,null,null,null,function (error) {
-            if(error) {
+        client.connections(null,null,null,null,null,null, function (error) {
+            if (error) {
                 console.log(error);
             }
         });
@@ -59,8 +59,8 @@ test('connections test', function (t) {
 
     // From not filled out
     t.throws(function() {
-        client.connections(null,'Brussel-Noord','nl',null,null,null,function (error) {
-            if(error) {
+        client.connections(null,'Brussel-Noord','nl',null,null,null, function (error) {
+            if (error) {
                 console.log(error);
             }
         });
@@ -69,8 +69,8 @@ test('connections test', function (t) {
 
     // To not filled out
     t.throws(function() {
-        client.connections('Brussel-Noord',null,'nl',null,null,null,function (error) {
-            if(error) {
+        client.connections('Brussel-Noord',null,'nl',null,null,null, function (error) {
+            if (error) {
                 console.log(error);
             }
         });
@@ -79,8 +79,8 @@ test('connections test', function (t) {
 
     // test a good call with en language
     t.doesNotThrow(function() {
-        client.connections('Antwerpen-Centraal','Brussel-Noord','nl',null,null,null,function (error, data) {
-            if(error) {
+        client.connections('Antwerpen-Centraal','Brussel-Noord','nl',null,null,null, function (error, data) {
+            if (error) {
                 console.log(error);
             }
             if (data) {
@@ -103,8 +103,8 @@ test('connections test', function (t) {
         // ("0" + d.getHours()).slice(-2) + ":" + ("0" + d.getMinutes()).slice(-2);
         //console.log("SFSADFSAFD" +datestring);
         //console.log(typeof datestring);
-        client.connections('Antwerpen-Centraal','Brussel-Noord','nl',datestring,null,null,function (error, data) {
-            if(error) {
+        client.connections('Antwerpen-Centraal','Brussel-Noord','nl',datestring,null,null, function (error, data) {
+            if (error) {
                 console.log(error);
                 //console.log(data);
                 // process.exit(0);
@@ -129,17 +129,17 @@ test('liveboard test', function (t) {
 
     // test a call with missing language (aka null)
     t.throws(function() {
-        client.liveboard(null,null,null,null,function (error) {
-            if(error) {
+        client.liveboard(null,null,null,null, function (error) {
+            if (error) {
                 console.log(error);
             }
         });
     } , {}, { skip: false });
 
     // test a good call with en language
-    t.doesNotThrow(function() {
-        client.liveboard(null, 'nl', 'Antwerpen-Centraal',null,function (error, data) {
-            if(error) {
+    t.doesNotThrow(function () {
+        client.liveboard(null, 'nl', 'Antwerpen-Centraal',null, function (error, data) {
+            if (error) {
                 console.log(error);
             }
             if (data) {
@@ -157,7 +157,7 @@ test('liveboard test', function (t) {
     // test a good call with ID and no name
     t.doesNotThrow(function() {
         client.liveboard('BE.NMBS.008892007', 'nl', null ,null,function (error, data) {
-            if(error) {
+            if (error) {
                 console.log("SDFASFDASFDASFD");
                 console.log(error);
             }
@@ -176,7 +176,7 @@ test('liveboard test', function (t) {
     // test a good call with ID and no name and with ardep set
     t.doesNotThrow(function() {
         client.liveboard('BE.NMBS.008892007', 'nl', null ,'departure',function (error, data) {
-            if(error) {
+            if (error) {
                 console.log(error);
             }
             if (data) {
@@ -194,7 +194,7 @@ test('liveboard test', function (t) {
     // Test id and station filled out together needs to throw an error
     t.throws(function() {
         client.liveboard('BE.NMBS.008892007', 'nl', 'Brussel-Centraal',null, function (error) {
-            if(error) {
+            if (error) {
                 console.log(error);
             }
         });
@@ -203,7 +203,7 @@ test('liveboard test', function (t) {
     // Test id and station not filled out together , needs to throw error
     t.throws(function() {
         client.liveboard(null, 'nl', null ,null, function (error) {
-            if(error) {
+            if (error) {
                 console.log(error);
             }
         });
@@ -219,7 +219,7 @@ test('stations test', function (t) {
     // test a call with missing language (aka null)
     t.throws(function() {
         client.stations(null,function (error) {
-            if(error) {
+            if (error) {
                 console.log(error);
             }
         });
@@ -230,7 +230,7 @@ test('stations test', function (t) {
     // test a call with missing language (aka null)
     t.doesNotThrow(function() {
         client.stations('nl',function (error, data) {
-            if(error) {
+            if (error) {
                 console.log(error);
             }
             if (data) {
@@ -254,7 +254,7 @@ test('vehicle test', function (t) {
     // test a call with missing language (aka null)
     t.throws(function() {
         client.vehicle(null,null,null,function (error) {
-            if(error) {
+            if (error) {
                 console.log(error);
             }
         });
@@ -263,7 +263,7 @@ test('vehicle test', function (t) {
     // test a call with missing id (aka null) but lang is set
     t.throws(function() {
         client.vehicle(null,'nl',null,function (error) {
-            if(error) {
+            if (error) {
                 console.log(error);
             }
         });
@@ -273,7 +273,7 @@ test('vehicle test', function (t) {
     // test a call with language and
     t.doesNotThrow(function() {
         client.vehicle('BE.NMBS.IC1832','fr',null,function (error, data) {
-            if(error) {
+            if (error) {
                 console.log(error);
             }
             if (data) {
