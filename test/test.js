@@ -5,12 +5,12 @@
 
 if (typeof module === "object" && typeof require === "function") {
     var test = require('tap').test;
-    var irailclient = require('../');
+    var Irailclient = require('../');
 }
 
 test('disturbance test', function (t) {
     t.plan(6);
-    var client = new irailclient();
+    var client = new Irailclient();
 
     // test a call with missing language (aka null)
     t.throws(function() {
@@ -45,7 +45,7 @@ test('disturbance test', function (t) {
 
 test('connections test', function (t) {
     t.plan(13);
-    var client = new irailclient();
+    var client = new Irailclient();
 
     // test a call with missing language (aka null)
     t.throws(function() {
@@ -125,7 +125,7 @@ test('connections test', function (t) {
 
 test('liveboard test', function (t) {
     t.plan(13);
-    var client = new irailclient();
+    var client = new Irailclient();
 
     // test a call with missing language (aka null)
     t.throws(function() {
@@ -214,7 +214,7 @@ test('liveboard test', function (t) {
 
 test('stations test', function (t) {
     t.plan(6);
-    var client = new irailclient();
+    var client = new Irailclient();
 
     // test a call with missing language (aka null)
     t.throws(function() {
@@ -249,7 +249,7 @@ test('stations test', function (t) {
 
 test('vehicle test', function (t) {
     t.plan(6);
-    var client = new irailclient();
+    var client = new Irailclient();
 
     // test a call with missing language (aka null)
     t.throws(function() {

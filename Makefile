@@ -8,6 +8,9 @@ test:
 jshint:
 	jshint lib examples test index.js
 
+jslint:
+	jslint --edition=latest test/test.js index.js
+
 tests: test
 
 tap:
@@ -26,4 +29,4 @@ skel:
 	touch index.js
 	@NODE_ENV=test npm install 
 
-.PHONY: test tap cover unit jshint skel
+.PHONY: test tap cover unit jshint skel jslint
