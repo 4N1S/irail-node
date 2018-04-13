@@ -248,7 +248,7 @@ test('stations test', function (t) {
 });
 
 test('vehicle test', function (t) {
-    t.plan(5);
+    t.plan(6);
     var client = new irailclient();
 
     // test a call with missing language (aka null)
@@ -259,6 +259,16 @@ test('vehicle test', function (t) {
             }
         });
     } , {}, { skip: false });
+
+    // test a call with missing id (aka null) but lang is set
+    t.throws(function() {
+        client.vehicle(null,'nl',null,function (error) {
+            if(error) {
+                console.log(error);
+            }
+        });
+    } , {}, { skip: false });
+
 
     // test a call with language and
     t.doesNotThrow(function() {
