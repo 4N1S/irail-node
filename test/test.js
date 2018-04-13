@@ -44,7 +44,7 @@ test('disturbance test', function (t) {
 });
 
 test('connections test', function (t) {
-    t.plan(10);
+    t.plan(13);
     var client = new irailclient();
 
     // test a call with missing language (aka null)
@@ -96,12 +96,13 @@ test('connections test', function (t) {
     } , 'No exception occured');
 
     // test a good call with nl , date, timesel departure (seems to 404 on the backend with a date , even today )
-    /*
     t.doesNotThrow(function() {
         // Create a simple data string natively
         var d = new Date();
-        var datestring = ("0" + d.getDate()).slice(-2) + ("0"+(d.getMonth()+1)).slice(-2) + d.getFullYear();
+        var datestring = ("0" + d.getDate()).slice(-2) + ("0"+(d.getMonth()+1)).slice(-2) + (''+(d.getFullYear())).slice(-2);
         // ("0" + d.getHours()).slice(-2) + ":" + ("0" + d.getMinutes()).slice(-2);
+        //console.log("SFSADFSAFD" +datestring);
+        //console.log(typeof datestring);
         client.connections('Antwerpen-Centraal','Brussel-Noord','nl',datestring,null,null,function (error, data) {
             if(error) {
                 console.log(error);
@@ -119,7 +120,6 @@ test('connections test', function (t) {
             }
         });
     } , 'No exception occured');
-    */
     t.pass('Done connections');
 });
 
