@@ -114,7 +114,21 @@ irailnode.prototype.vehicle = function(id,lang,date,callback) {
         throw e;
     }
 
-    this.pubRequest("vehicle/?id="+id+"&date="+date+"&format=json&lang="+lang, {}, function(err, data) {
+    // params as object
+    var params = {
+        format: 'json'
+    };
+
+    // Required
+    if (lang) { params.lang= lang; }
+    if (id) { params.id=id; }
+
+    // Optional
+    if (date) { params.date= date; }
+
+    var post_data = querystring.stringify(params);
+
+    this.pubRequest("vehicle/?"+post_data, {}, function(err, data) {
         return callback(err, data);
     });
 };
