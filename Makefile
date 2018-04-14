@@ -11,6 +11,9 @@ jshint:
 jslint:
 	jslint --edition=latest test/test.js index.js
 
+eslint:
+	eslint test/test.js index.js
+
 tests: test
 
 tap:
@@ -29,4 +32,4 @@ skel:
 	touch index.js
 	@NODE_ENV=test npm install 
 
-.PHONY: test tap cover unit jshint skel jslint
+.PHONY: test tap cover unit jshint skel jslint eslint

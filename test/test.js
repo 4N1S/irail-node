@@ -1,6 +1,10 @@
 /* jshint -W079 */
+/* jshint -W081 */
 /* jshint browser: false, node: true, strict: true */
-/* jslint node: true */
+/* jshint onevar: true */
+/* jslint vars: true */
+/*eslint no-console: ["error", { allow: ["warn", "error"] }] */
+
 'use strict';
 
 if (typeof module === "object" && typeof require === "function") {
@@ -16,7 +20,7 @@ test('disturbance test', function (t) {
     t.throws(function () {
         client.disturbances(null, function (error) {
             if (error) {
-                console.log(error);
+                console.error(error);
             }
         });
     }, {}, { skip: false });
@@ -26,7 +30,7 @@ test('disturbance test', function (t) {
     t.doesNotThrow(function () {
         client.disturbances('en', function (error, data) {
             if (error) {
-                console.log(error);
+                console.error(error);
             }
             // console.log(data);//process.exit(0);
             t.ok(data, 'expect defined value');
@@ -53,7 +57,7 @@ test('connections test', function (t) {
     t.throws(function () {
         client.connections(null,null,null,null,null,null, function (error) {
             if (error) {
-                console.log(error);
+                console.error(error);
             }
         });
     } , {}, { skip: false });
@@ -63,7 +67,7 @@ test('connections test', function (t) {
     t.throws(function () {
         client.connections(null,'Brussel-Noord','nl',null,null,null, function (error) {
             if (error) {
-                console.log(error);
+                console.error(error);
             }
         });
     } , {}, { skip: false });
@@ -73,7 +77,7 @@ test('connections test', function (t) {
     t.throws(function () {
         client.connections('Brussel-Noord',null,'nl',null,null,null, function (error) {
             if (error) {
-                console.log(error);
+                console.error(error);
             }
         });
     } , {}, { skip: false });
@@ -83,7 +87,7 @@ test('connections test', function (t) {
     t.doesNotThrow(function () {
         client.connections('Antwerpen-Centraal','Brussel-Noord','nl',null,null,null, function (error, data) {
             if (error) {
-                console.log(error);
+                console.error(error);
             }
             /*
             if (data) {
@@ -109,7 +113,7 @@ test('connections test', function (t) {
         //console.log(typeof datestring);
         client.connections('Antwerpen-Centraal','Brussel-Noord','nl',datestring,null,null, function (error, data) {
             if (error) {
-                console.log(error);
+                console.error(error);
                 //console.log(data);
                 // process.exit(0);
             }
@@ -137,7 +141,7 @@ test('liveboard test', function (t) {
     t.throws(function () {
         client.liveboard(null,null,null,null, function (error) {
             if (error) {
-                console.log(error);
+                console.error(error);
             }
         });
     } , {}, { skip: false });
@@ -146,7 +150,7 @@ test('liveboard test', function (t) {
     t.doesNotThrow(function () {
         client.liveboard(null, 'nl', 'Antwerpen-Centraal',null, function (error, data) {
             if (error) {
-                console.log(error);
+                console.error(error);
             }
             /*
             if (data) {
@@ -166,8 +170,7 @@ test('liveboard test', function (t) {
     t.doesNotThrow(function () {
         client.liveboard('BE.NMBS.008892007', 'nl', null ,null,function (error, data) {
             if (error) {
-                console.log("SDFASFDASFDASFD");
-                console.log(error);
+                console.error(error);
             }
             /*
             if (data) {
@@ -187,7 +190,7 @@ test('liveboard test', function (t) {
     t.doesNotThrow(function () {
         client.liveboard('BE.NMBS.008892007', 'nl', null ,'departure',function (error, data) {
             if (error) {
-                console.log(error);
+                console.error(error);
             }
             /*
             if (data) {
@@ -207,7 +210,7 @@ test('liveboard test', function (t) {
     t.throws(function () {
         client.liveboard('BE.NMBS.008892007', 'nl', 'Brussel-Centraal',null, function (error) {
             if (error) {
-                console.log(error);
+                console.error(error);
             }
         });
     } , {}, { skip: false });
@@ -216,7 +219,7 @@ test('liveboard test', function (t) {
     t.throws(function () {
         client.liveboard(null, 'nl', null ,null, function (error) {
             if (error) {
-                console.log(error);
+                console.error(error);
             }
         });
     } , {}, { skip: false });
@@ -232,7 +235,7 @@ test('stations test', function (t) {
     t.throws(function () {
         client.stations(null,function (error) {
             if (error) {
-                console.log(error);
+                console.error(error);
             }
         });
     } , {}, { skip: false });
@@ -243,7 +246,7 @@ test('stations test', function (t) {
     t.doesNotThrow(function () {
         client.stations('nl',function (error, data) {
             if (error) {
-                console.log(error);
+                console.error(error);
             }
             /*
             if (data) {
@@ -269,7 +272,7 @@ test('vehicle test', function (t) {
     t.throws(function () {
         client.vehicle(null,null,null,function (error) {
             if (error) {
-                console.log(error);
+                console.error(error);
             }
         });
     } , {}, { skip: false });
@@ -278,7 +281,7 @@ test('vehicle test', function (t) {
     t.throws(function () {
         client.vehicle(null,'nl',null,function (error) {
             if (error) {
-                console.log(error);
+                console.error(error);
             }
         });
     } , {}, { skip: false });
@@ -288,7 +291,7 @@ test('vehicle test', function (t) {
     t.doesNotThrow(function () {
         client.vehicle('BE.NMBS.IC1832','fr',null,function (error, data) {
             if (error) {
-                console.log(error);
+                console.error(error);
             }
             /*
             if (data) {
