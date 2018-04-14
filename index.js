@@ -31,6 +31,7 @@ var irailnode = function (key, secret, verbose) {
             "Content-Type": "application/x-www-form-urlencoded"
         }
     };
+    this.timeout = 10000;
 };
 
 irailnode.prototype.stations = function (lang, callback) {
@@ -171,6 +172,7 @@ irailnode.prototype.pubRequest = function (method, params, callback) {
         method: 'GET',
         verbose: this.verbose
     };
+
     var cb = function (response) {
         if (response.statusCode < 200 || response.statusCode > 299) {
             callback(response.statusCode);
