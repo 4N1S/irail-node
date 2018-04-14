@@ -4,7 +4,6 @@
 /*jshint -W079 */
 /*jshint onevar: true */
 /* jslint vars: true */
-/*eslint no-console: ["error", { allow: ["oarn", "error"] }] */
 
 'use strict';
 
@@ -180,9 +179,8 @@ irailnode.prototype.pubRequest = function (method, params, callback) {
             var str = '';
             response.on('data', function (chunk) {
                 str += chunk;
-                // if (options.verbose) { console.log(str); }
+                // if (options.verbose) { console.log(str); } // eslint-disable-line no-console
             });
-
 
             response.on('end', function () {
                 var objFromJSON;
