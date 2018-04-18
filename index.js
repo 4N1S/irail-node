@@ -10,11 +10,6 @@
 var https = require('https');
 var querystring = require('querystring');
 
-// var _ = require('underscore');
-// var crypto = require('crypto');
-// var url = require('url');
-// var urlencode = require('urlencode');
-
 var irailnode = function (key, secret, verbose) {
     this.verbose = verbose || false;
     this.version = "0.0.1";
