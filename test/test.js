@@ -2,7 +2,10 @@
 /* jshint -W081 */
 /* jshint browser: false, node: true, strict: true */
 /* jshint onevar: true */
-/* jslint vars: true */
+/*jslint vars: true */
+/*jslint regexp: true */
+/*jslint indent: 4 */
+/*jslint node: true */
 
 'use strict';
 
@@ -44,7 +47,7 @@ test('disturbance test', function (t) {
             }
             // t.equal(1,1);
         });
-    } , 'No exception occured');
+    }, 'No exception occured');
     t.pass('Done disturbance');
 });
 
@@ -54,37 +57,37 @@ test('connections test', function (t) {
 
     // test a call with missing language (aka null)
     t.throws(function () {
-        client.connections(null,null,null,null,null,null, function (error) {
+        client.connections(null, null, null, null, null, null, function (error) {
             if (error) {
                 console.error(error); // eslint-disable-line no-console
             }
         });
-    } , {}, { skip: false });
+    }, {}, { skip: false });
     t.pass('Next A');
 
     // From not filled out
     t.throws(function () {
-        client.connections(null,'Brussel-Noord','nl',null,null,null, function (error) {
+        client.connections(null, 'Brussel-Noord', 'nl', null, null, null, function (error) {
             if (error) {
                 console.error(error); // eslint-disable-line no-console
             }
         });
-    } , {}, { skip: false });
+    }, {}, { skip: false });
     t.pass('Next B');
 
     // To not filled out
     t.throws(function () {
-        client.connections('Brussel-Noord',null,'nl',null,null,null, function (error) {
+        client.connections('Brussel-Noord', null, 'nl', null, null, null, function (error) {
             if (error) {
                 console.error(error); // eslint-disable-line no-console
             }
         });
-    } , {}, { skip: false });
+    }, {}, { skip: false });
     t.pass('Next C');
 
     // test a good call with en language
     t.doesNotThrow(function () {
-        client.connections('Antwerpen-Centraal','Brussel-Noord','nl',null,null,null, function (error, data) {
+        client.connections('Antwerpen-Centraal', 'Brussel-Noord', 'nl', null, null, null, function (error, data) {
             if (error) {
                 console.error(error); // eslint-disable-line no-console
             }
@@ -100,17 +103,13 @@ test('connections test', function (t) {
                 t.match(data, { timestamp: /(\d+)/ });
             }
         });
-    } , 'No exception occured');
+    }, 'No exception occured');
 
     // test a good call with nl , date, timesel departure (seems to 404 on the backend with a date , even today )
     t.doesNotThrow(function () {
         // Create a simple data string natively
-        var d = new Date();
-        var datestring = ("0" + d.getDate()).slice(-2) + ("0"+(d.getMonth()+1)).slice(-2) + (''+(d.getFullYear())).slice(-2);
-        // ("0" + d.getHours()).slice(-2) + ":" + ("0" + d.getMinutes()).slice(-2);
-        //console.log("SFSADFSAFD" +datestring);
-        //console.log(typeof datestring);
-        client.connections('Antwerpen-Centraal','Brussel-Noord','nl',datestring,null,null, function (error, data) {
+        var d = new Date(), datestring = ("0" + d.getDate()).slice(-2) + ("0" + (d.getMonth() + 1)).slice(-2) + ("" + (d.getFullYear())).slice(-2);
+        client.connections('Antwerpen-Centraal', 'Brussel-Noord', 'nl', datestring, null, null, function (error, data) {
             if (error) {
                 console.error(error); // eslint-disable-line no-console
                 //console.log(data);
@@ -128,7 +127,7 @@ test('connections test', function (t) {
                 t.match(data, { timestamp: /(\d+)/ });
             }
         });
-    } , 'No exception occured');
+    }, 'No exception occured');
     t.pass('Done connections');
 });
 
@@ -138,16 +137,16 @@ test('liveboard test', function (t) {
 
     // test a call with missing language (aka null)
     t.throws(function () {
-        client.liveboard(null,null,null,null, function (error) {
+        client.liveboard(null, null, null, null, function (error) {
             if (error) {
                 console.error(error); // eslint-disable-line no-console
             }
         });
-    } , {}, { skip: false });
+    }, {}, { skip: false });
 
     // test a good call with en language
     t.doesNotThrow(function () {
-        client.liveboard(null, 'nl', 'Antwerpen-Centraal',null, function (error, data) {
+        client.liveboard(null, 'nl', 'Antwerpen-Centraal', null, function (error, data) {
             if (error) {
                 console.error(error); // eslint-disable-line no-console
             }
@@ -163,11 +162,11 @@ test('liveboard test', function (t) {
                 t.match(data, { timestamp: /(\d+)/ });
             }
         });
-    } , 'No exception occured');
+    }, 'No exception occured');
 
     // test a good call with ID and no name
     t.doesNotThrow(function () {
-        client.liveboard('BE.NMBS.008892007', 'nl', null ,null,function (error, data) {
+        client.liveboard('BE.NMBS.008892007', 'nl', null, null, function (error, data) {
             if (error) {
                 console.error(error); // eslint-disable-line no-console
             }
@@ -183,11 +182,11 @@ test('liveboard test', function (t) {
                 t.match(data, { timestamp: /(\d+)/ });
             }
         });
-    } , 'No exception occured');
+    }, 'No exception occured');
 
     // test a good call with ID and no name and with ardep set
     t.doesNotThrow(function () {
-        client.liveboard('BE.NMBS.008892007', 'nl', null ,'departure',function (error, data) {
+        client.liveboard('BE.NMBS.008892007', 'nl', null, 'departure', function (error, data) {
             if (error) {
                 console.error(error); // eslint-disable-line no-console
             }
@@ -203,25 +202,25 @@ test('liveboard test', function (t) {
                 t.match(data, { timestamp: /(\d+)/ });
             }
         });
-    } , 'No exception occured');
+    }, 'No exception occured');
 
     // Test id and station filled out together needs to throw an error
     t.throws(function () {
-        client.liveboard('BE.NMBS.008892007', 'nl', 'Brussel-Centraal',null, function (error) {
+        client.liveboard('BE.NMBS.008892007', 'nl', 'Brussel-Centraal', null, function (error) {
             if (error) {
                 console.error(error); // eslint-disable-line no-console
             }
         });
-    } , {}, { skip: false });
+    }, {}, { skip: false });
 
     // Test id and station not filled out together , needs to throw error
     t.throws(function () {
-        client.liveboard(null, 'nl', null ,null, function (error) {
+        client.liveboard(null, 'nl', null, null, function (error) {
             if (error) {
                 console.error(error); // eslint-disable-line no-console
             }
         });
-    } , {}, { skip: false });
+    }, {}, { skip: false });
 
     t.pass('Done liveboard');
 });
@@ -232,18 +231,18 @@ test('stations test', function (t) {
 
     // test a call with missing language (aka null)
     t.throws(function () {
-        client.stations(null,function (error) {
+        client.stations(null, function (error) {
             if (error) {
                 console.error(error); // eslint-disable-line no-console
             }
         });
-    } , {}, { skip: false });
+    }, {}, { skip: false });
 
     t.pass('Next');
 
     // test a call with missing language (aka null)
     t.doesNotThrow(function () {
-        client.stations('nl',function (error, data) {
+        client.stations('nl', function (error, data) {
             if (error) {
                 console.error(error); // eslint-disable-line no-console
             }
@@ -259,7 +258,7 @@ test('stations test', function (t) {
                 t.match(data[0], { name: /(.+)/ });
             }
         });
-    } , 'No exception occured');
+    }, 'No exception occured');
     t.pass('Done stations');
 });
 
@@ -269,26 +268,26 @@ test('vehicle test', function (t) {
 
     // test a call with missing language (aka null)
     t.throws(function () {
-        client.vehicle(null,null,null,function (error) {
+        client.vehicle(null, null, null, function (error) {
             if (error) {
                 console.error(error); // eslint-disable-line no-console
             }
         });
-    } , {}, { skip: false });
+    }, {}, { skip: false });
 
     // test a call with missing id (aka null) but lang is set
     t.throws(function () {
-        client.vehicle(null,'nl',null,function (error) {
+        client.vehicle(null, 'nl', null, function (error) {
             if (error) {
                 console.error(error); // eslint-disable-line no-console
             }
         });
-    } , {}, { skip: false });
+    }, {}, { skip: false });
 
 
     // test a call with language and
     t.doesNotThrow(function () {
-        client.vehicle('BE.NMBS.IC1832','fr',null,function (error, data) {
+        client.vehicle('BE.NMBS.IC1832', 'fr', null, function (error, data) {
             if (error) {
                 console.error(error); // eslint-disable-line no-console
             }
@@ -304,7 +303,7 @@ test('vehicle test', function (t) {
                 t.match(data, { timestamp: /(\d+)/ });
             }
         });
-    } , 'No exception occured');
+    }, 'No exception occured');
 
     t.pass('Done vehicle');
 });

@@ -1,9 +1,9 @@
-/* jshint browser: false, node: true, strict: true */
-/*jslint node: true */
+/*jshint browser: false, node: true, strict: true */
 /*jshint -W081 */
 /*jshint -W079 */
 /*jshint onevar: true */
-/* jslint vars: true */
+/*jslint vars: true */
+/*jslint node: true */
 
 'use strict';
 
