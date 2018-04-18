@@ -1,7 +1,7 @@
-/* jshint -W079 */
-/* jshint -W081 */
-/* jshint browser: false, node: true, strict: true */
-/* jshint onevar: true */
+/*jshint -W079 */
+/*jshint -W081 */
+/*jshint browser: false, node: true, strict: true */
+/*jshint onevar: true */
 /*jslint vars: true */
 /*jslint regexp: true */
 /*jslint indent: 4 */
