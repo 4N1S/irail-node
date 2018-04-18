@@ -12,7 +12,7 @@ npm install irail-node
 ```
 
 ```javasctipt
-var iralclient = require('irail-node');
+var irailclient = require('irail-node');
 ```
 
 ```javasctipt
