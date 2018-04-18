@@ -26,7 +26,6 @@ var irailnode = function (key, secret, verbose) {
             "Content-Type": "application/x-www-form-urlencoded"
         }
     };
-    this.timeout = 10000;
 };
 
 irailnode.prototype.stations = function (lang, callback) {
