@@ -1,3 +1,6 @@
+/*jslint node: true */
+'use strict';
+
 var irailnode = require('../index.js');
 // Public API
 
@@ -18,7 +21,7 @@ var lang="en";
 // 	console.dir(data);
 // });
 
-var arrdep="departure";
+// var arrdep="departure";
 var id="BE.NMBS.008813003"; //# Bruxelles centrale
 var date=180318;
 
@@ -43,6 +46,6 @@ var date=180318;
 
 var id="BE.NMBS.IC1832";
 client.vehicle(id,lang,date,function (error, data) {
-	if(error) console.log("E!",error)
-	console.dir(data);
+    if(error) { console.log("E!",error); }
+    console.dir(data);
 });
